@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* Pre Built Theme */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Font Import */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:500');
+
+body {
+    background-color: #f3f3f3;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: left;
+    padding: 12px;
+}
+
+.mat-card-header-text {
+    margin: 10px 8px 0px 8px !important;
+}
+
+img {
+    width: 100%;
+}
+
+.nameSort .mat-input-wrapper {
+    visibility: hidden;
+}
+
+.disbName .mat-option-pseudo-checkbox {
+    display: none;
+}
+
+.mat-select-panel {
+    padding-bottom: 10px !important;
+}
+
+.mat-form-field-infix {
+    width: 280px !important;
+}
+
+.sc-background {
+    z-index: 2 !important;
+}

@@ -1,0 +1,57 @@
+.card-picture {
+    width: 30%;
+    margin-bottom: 2%;
+}
+
+.card-picture-xs {
+    width: 100%;
+    margin-bottom: 5% !important;
+}
+
+.albumCover {
+    width: 100%;
+    margin-bottom: -4px !important;
+}
+
+.albumCover-xs{
+    height: 100px;
+    margin-bottom: 0px !important;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mat-card {
+    padding: 0px;
+}
+
+.form-field {
+    width: 50%;
+}
+
+.form-field-xs {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, .87);
+}
+
+.nameSort .mat-option-pseudo-checkbox {
+    display: none;
+}
+
+.nameSort {
+    min-width: 120px !important;
+}
+
+.box-xs{
+    margin-top: -50px;
+}
+
+.optionStyle {
+    padding: 8px 14px;
+}

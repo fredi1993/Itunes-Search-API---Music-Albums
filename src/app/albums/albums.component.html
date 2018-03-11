@@ -1,0 +1,62 @@
+<!-- Loading Spinner -->
+<spinner-component [spinnerShow]="showLoader"></spinner-component>
+<!-- Search artist, filter and sort section -->
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutWrap fxLayoutGap="2%">
+    <!-- Search for a new artist -->
+    <div fxFlex="50%" fxLayout="row" fxLayoutAlign="center center" fxLayoutWrap fxLayoutGap="2%" fxLayoutGap.xs="4%">
+        <mat-form-field fxLayoutAlign.xs="start" class="form-field" ngClass.xs="form-field-xs" (keyup.enter)="search(value)">
+            <input matInput type="text" [(ngModel)]="value" placeholder="Enter the name of an album. Default one: Beatels" />
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <div class="button-row" fxLayoutAlign.xs="end" fxHide.xs="true">
+            <button mat-raised-button color="primary" (click)="search(value)">Search</button>
+        </div>
+    </div>
+    <!-- Filter returned results -->
+    <div fxFlex="50%" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutAlign.xs="start center" fxLayoutWrap
+        fxLayoutGap="2%">
+        <mat-form-field class="form-field" ngClass.xs="form-field-xs">
+            <input matInput type="text" [(ngModel)]="filterValue" placeholder="Filter the results" />
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <!-- Sort returned results -->
+        <button ngClass="menu-filter-item-button" type="button" mat-button (click)="select.open();showSort=!showSort">
+            <mat-icon>sort</mat-icon>
+        </button>
+
+        <mat-form-field ngClass=" nameSort">
+            <mat-select #select placeholder="Name" (change)="getSortt($event)">
+                <mat-option class="disbName" disabled>Name</mat-option>
+
+                <mat-radio-group (change)="getSort()" class="example-radio-group" [(ngModel)]="selectedSort">
+                    <mat-radio-button class="optionStyle" value="az">A - Z</mat-radio-button>
+                    <br>
+                    <mat-radio-button class="optionStyle" value="za">Z - A</mat-radio-button>
+                </mat-radio-group>
+
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+</div>
+
+<!-- Album Section -->
+<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center center" class="box" ngClass.xs="box-xs">
+
+    <mat-card fxLayout.xs="row"  ngClass.xs="card-picture-xs" class="card-picture box"  *ngFor="let album of albums |filter:filterValue | orderBy: order:reverse | paginate: { itemsPerPage: 9, currentPage: p }; let i=index">
+        <a fxLayout="column" fxLayout.xs="row-reverse" [routerLink]="['/album-details', album.collectionId]" routerLinkActive="active">
+            <mat-card-header fxFlex="100%" fxFlex.xs="65%" >
+                <mat-card-title>{{album.collectionName}}</mat-card-title>
+                <mat-card-subtitle>{{album.artistName}}</mat-card-subtitle>
+            </mat-card-header>
+            <img fxFlex="100%" fxFlex.xs="35%" ngClass.xs="albumCover-xs"  class="albumCover" [defaultImage]="'https://cdn.dribbble.com/users/24447/screenshots/1201310/inkling_spinner.gif'" [lazyLoad]="album.thumbnail"
+                alt="">
+        </a>
+    </mat-card>
+    <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+</div>

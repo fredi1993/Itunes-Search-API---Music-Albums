@@ -1,0 +1,61 @@
+<div class="container">
+  <spinner-component [spinnerShow]="showLoader2"></spinner-component>
+  <mat-card>
+    <mat-card-content>
+      <h2 class="example-h2">Album Details</h2>
+      <mat-tab-group class="demo-tab-group">
+        <mat-tab label="General Info">
+          <div class="demo-tab-content">
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap class="flexTrack">
+              <div fxFlex="30%">
+                <img class="albumCover" [defaultImage]="'https://cdn.dribbble.com/users/24447/screenshots/1201310/inkling_spinner.gif'" [lazyLoad]="albumGenDetails.thumbnail"
+                  alt="albumGenDetails.collectionCensoredName">
+              </div>
+              <div fxFlex="65%">
+                <mat-list role="list">
+                  <mat-list-item role="listitem">
+                    <span class="albDetails">Artist Name: </span> {{albumGenDetails.artistName}}
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                    <span class="albDetails">Album Name: </span> {{albumGenDetails.collectionName}}
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                    <span class="albDetails">Track Number: </span> {{albumGenDetails.trackCount}}
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                    <span class="albDetails">Genre: </span> {{albumGenDetails.primaryGenreName}}
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                    <span class="albDetails">Price: </span> {{albumGenDetails.collectionPrice}} {{albumGenDetails.currency}}
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                    <span class="albDetails">Release Date: </span> {{albumGenDetails.releaseDate | date}}
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                    <span class="albDetails">Country: </span> {{albumGenDetails.country}}
+                  </mat-list-item>
+                </mat-list>
+              </div>
+
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Track List">
+          <div class="demo-tab-content">
+            <mat-list fxLayout="row" fxLayout.xs="column" fxLayoutWrap class="flexTrack">
+              <mat-list-item fxFlex="30%" *ngFor="let track of albumTracks; let i=index">
+                <mat-icon mat-list-icon>play_circle_filled</mat-icon>
+                <h4 mat-line>{{track.trackName}}</h4>
+                <p mat-line>Released: {{track.releaseDate | date}}</p>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </mat-list>
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+
+</div>
